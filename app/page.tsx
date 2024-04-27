@@ -6,7 +6,7 @@ export default async function Index() {
   return (
     <div className="flex flex-col gap-6">
       <h1 className="text-3xl font-bold">waffles!</h1>
-      <div className="flex flex-col rounded-md bg-neutral-100">
+      <div className="flex flex-col rounded-md bg-neutral-500">
         <div className="p-4 font-bold rounded-t-md bg-neutral-200">
           Current Session
         </div>

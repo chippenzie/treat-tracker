@@ -15,10 +15,6 @@ export default async function UserButton() {
   if (!session?.user) return <SignIn />
   return (
     <div className="flex gap-2 items-center">
-      <SignOut />
-      <span className="hidden text-sm sm:inline-flex">
-        {session.user.email}
-      </span>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="relative w-8 h-8 rounded-full">
@@ -47,11 +43,9 @@ export default async function UserButton() {
               </p>
             </div>
           </DropdownMenuLabel>
-          <DropdownMenuItem>
-            <SignOut />
-          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
+      <SignOut />
     </div>
   )
 }

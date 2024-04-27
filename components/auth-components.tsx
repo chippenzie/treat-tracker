@@ -9,7 +9,7 @@ export function SignIn() {
         await signIn("github")
       }}
     >
-      <button type="submit">Signin with GitHub</button>
+      <button type="submit">Sign In (GitHub only)</button>
     </form>
   )
 } 
@@ -24,7 +24,7 @@ export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
       className="w-full"
     >
       <Button variant="ghost" className="w-full p-0" {...props}>
-        Sign Out!
+        Sign Out
       </Button>
     </form>
   )

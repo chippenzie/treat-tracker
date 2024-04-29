@@ -1,4 +1,6 @@
 
 export function MainNav() {
-    return '<a href="/">Treat Tracker</a>';
+    return <div> 
+        { '<a href="/">' } <a href="/">Treat Tracker</a> { '</a>' }
+    </div>
 }

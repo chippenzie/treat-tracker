@@ -1,4 +1,4 @@
 
 export function MainNav() {
-    return 'Treat Tracker';
+    return '<a href="/">Treat Tracker</a>';
 }

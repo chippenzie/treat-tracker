@@ -1,10 +1,12 @@
 import { auth } from "@/auth"
+import Treats from "@/components/treats"
+import { getCurrentTimecode } from "@/lib/utils";
 
 export default async function Index() {
   const session = await auth();
   
 
-  const thisInterval = Math.floor(Number(new Date()) / (1000 * 30))
+  const thisInterval = getCurrentTimecode();
 
   /*
   const dayOfYear = (date: any) => {
@@ -15,11 +17,18 @@ export default async function Index() {
     return  date.getFullYear() + ':' + Math.floor((date) / (1000 * 30 ));
   }
   */
+  const userId = session?.user?.id;
 
 
   return (
+
     <div className="flex flex-col gap-6">
       <h1 className="text-3xl font-bold">oh gnar</h1>
+      <Treats user={userId}/>
+
+
+
+
       <div className="flex flex-col rounded-md bg-neutral-500">
         <div className="p-4 font-bold rounded-t-md bg-neutral-200">
           Current Session

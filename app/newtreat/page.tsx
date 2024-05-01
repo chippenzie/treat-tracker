@@ -1,13 +1,13 @@
 // import Form from '@/app/ui/invoices/create-form';
 // import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
 // import { fetchCustomers } from '@/app/lib/data';
-import TreatForm from "@/app/ui/treats/treat-form"; 
+import Form from "@/app/ui/treats/treat-form"; 
 
 export default async function Page() {
  
   return (
     <main>
-        <TreatForm></TreatForm>
+        <Form />
     </main>
   );
 }

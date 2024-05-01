@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from '@/app/ui/button';
+import { Button } from '@/app/ui/buttons';
 import { createTreat } from '@/lib/actions';
 import { useFormState } from 'react-dom';
 

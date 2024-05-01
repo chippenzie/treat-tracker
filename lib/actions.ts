@@ -62,3 +62,18 @@ export async function createTreat(prevState: State, formData: FormData) {
      revalidatePath('/');
      redirect('/');
  }
+
+
+ export async function updateTreatCount(id: string) { 
+    //throw new Error('farts!'); 
+    try {
+        await sql`DELETE FROM invoices WHERE id = ${id}`;
+        revalidatePath('/dashboard/invoices');
+        return { message: 'Deleted Invoice.' };
+    }
+    catch (e) {
+        return {
+            message: 'DB Error - failed to Create Invoice'
+        }        
+    }
+}

@@ -9,8 +9,10 @@ export async function fetchUserTreats() {
 
   try {
     const data = await sql`
-      select * from treats t left join treatlog tl on t.id = tl.treat_id
-      WHERE t.user_id = ${userId}`;
+      SELECT t.*, count(tl.treat_id) as treatcount 
+      FROM treats t left join treatlog tl on t.id = tl.treat_id
+      WHERE t.user_id = ${userId}
+      GROUP BY t.id`;
       console.log('!!!');
       console.log(data.rows)
     return data.rows;
@@ -22,20 +24,6 @@ export async function fetchUserTreats() {
 
 }
 
-export async function fetchTreatLog(userId: string, treatId: number) {
-    noStore();
-    try {
-      const data = await sql`
-        SELECT treats.*, count(*) as treat_count
-        FROM treats OUTER JOIN treatlog ON (treats.id = treatlog.treat_id)
-        WHERE treat.user_id = $(userId)`;
-  
-      return data.rows;
-    } catch (error) {
-      console.error('Database Error:', error);
-      throw new Error('Failed to fetch the users treats.');
-    }
-}
 
 /*
 export async function fetchInvoiceById(id: string) {

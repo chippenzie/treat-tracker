@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { updateTreatCount } from '@/lib/actions';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
@@ -17,3 +18,17 @@ export function Button({ children, className, ...rest }: ButtonProps) {
     </button>
   );
 }
+
+
+export function TreatYoSelf({ id }: { id: string }) {
+  const updateTreatCountWithID = updateTreatCount.bind(null, id);
+
+  return (
+    <form action={updateTreatCountWithID}>
+      <button className="rounded-md border p-2 hover:bg-gray-100">
+        Treat Yo Self!
+      </button>
+    </form>
+  );
+}
+

@@ -1,19 +1,25 @@
 import { sql } from '@vercel/postgres';
+import { getUserId } from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
 import { notFound } from 'next/navigation';
 
-export async function fetchUserTreats(userId: string) {
+export async function fetchUserTreats() {
   noStore();
+  const userId = await getUserId();
+
   try {
     const data = await sql`
       select * from treats t left join treatlog tl on t.id = tl.treat_id
       WHERE t.user_id = ${userId}`;
-
-    return data;
+      console.log('!!!');
+      console.log(data.rows)
+    return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch the users treats.');
   }
+
+
 }
 
 export async function fetchTreatLog(userId: string, treatId: number) {

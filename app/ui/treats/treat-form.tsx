@@ -63,14 +63,6 @@ export default function Form() {
           <p className="mt-2 text-sm text-red-500">{state.message}</p>
         </div>
       </div>
-
-        <pre className="py-6 px-4 whitespace-pre-wrap break-all">
-          {JSON.stringify(state, null, 2)}
-        </pre>
-        <pre className="py-6 px-4 whitespace-pre-wrap break-all">
-          {JSON.stringify(Math.floor(Number(new Date()) / 1000), null, 2)}
-        </pre>
-
     </form>
   );
 }

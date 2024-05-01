@@ -9,11 +9,8 @@ import { getCurrentTimecode, getUserId } from './utils';
 
 export type State = {
     errors?: {
-        id?: string[];
-        user_id?: string[];
         name?: string[];
         period?: string[];
-        startOn?: string[];
     }
     message: string | null;
 }
@@ -44,8 +41,6 @@ export async function createTreat(prevState: State, formData: FormData) {
          return {
              errors: validatedFields.error.flatten().fieldErrors,
              message: 'bad fields, didn\'t create',
-             misc: 'period' + formData.get('period'),
-             musc: 'userud: ' + userId
          }
      }
  

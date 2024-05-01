@@ -15,6 +15,6 @@ export default function Treats(props:any) {
         <div>currentTreats <br />
         {JSON.stringify(currentTreats, null, 2)}</div>
 
-        <div> create a treat </div>
+        <div> <a href="/newtreat"> create a treat </a></div>
    </div>
 }

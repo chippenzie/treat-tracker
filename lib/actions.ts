@@ -26,8 +26,15 @@ const TreatFormSchema = z.object({
     startOn: z.number()
 })
 
+
+const TreatTrackSchema = z.object({
+    userId: z.string(),
+    timeCode: z.number(),
+    notes: z.string()
+})
+
 const CreateTreat = TreatFormSchema.omit({id: true, user_id: true, startOn: true});
-//const UpdateInvoice = FormSchema.omit({ id: true, date: true });
+const TrackTreat = TreatTrackSchema.omit({});
 
 export async function createTreat(prevState: State, formData: FormData) {
     const userId = await getUserId();
@@ -65,13 +72,33 @@ export async function createTreat(prevState: State, formData: FormData) {
 
 
  export async function updateTreatCount(id: string) { 
-    //throw new Error('farts!'); 
+    const currentTimecode = getCurrentTimecode();   
+
+    const validatedFields = TrackTreat.safeParse({
+        userId: id,
+        timeCode: currentTimecode,
+        notes: 'delish',
+     });
+ 
+     if (!validatedFields.success) {
+         return {
+             errors: validatedFields.error.flatten().fieldErrors,
+             message: 'bad fields, didn\'t create',
+         }
+     }
+
+     const { userId, timeCode, notes } = validatedFields.data;
+
     try {
-        await sql`DELETE FROM invoices WHERE id = ${id}`;
-        revalidatePath('/dashboard/invoices');
-        return { message: 'Deleted Invoice.' };
+        console.log('s$$$$$$up ' + id + ' ' + currentTimecode)
+        await sql`INSERT INTO treatlog(treat_id, time_code, notes) 
+                    VALUES (${userId}, ${timeCode}, ${notes})`;
+       revalidatePath('/');
+       console.log('whylordwhy')
+        return { message: 'Treat Tracked' };
     }
     catch (e) {
+        console.log(e)
         return {
             message: 'DB Error - failed to Create Invoice'
         }        

@@ -6,7 +6,6 @@ export default async function Treats(props:any) {
     const currentTreats = await fetchUserTreats();
     const nowTimeCode = getCurrentTimecode();
 
-   // console.log(currentTreats)
     return  <div>
         <h2>Treats</h2>
 
@@ -45,7 +44,7 @@ export default async function Treats(props:any) {
                     {treat.treatcount}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {Math.floor((nowTimeCode - treat.start_on) / treat.period)}
+                    {Math.ceil((nowTimeCode - treat.start_on) / treat.period) - treat.treatcount}
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">

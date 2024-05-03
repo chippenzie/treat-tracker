@@ -25,21 +25,6 @@ export default async function Index() {
     <div className="flex flex-col gap-6">
       <h1 className="text-3xl font-bold">oh gnar</h1>
       <Treats user={userId}/>
-
-
-
-
-      <div className="flex flex-col rounded-md bg-neutral-500">
-        <div className="p-4 font-bold rounded-t-md bg-neutral-200">
-          Current Session
-        </div>
-        <pre className="py-6 px-4 whitespace-pre-wrap break-all">
-          {JSON.stringify(session, null, 2)}
-        </pre>
-        <pre className="py-6 px-4 whitespace-pre-wrap break-all">
-          {JSON.stringify(thisInterval, null, 2)}
-        </pre>
-      </div>
     </div>
   )
 }

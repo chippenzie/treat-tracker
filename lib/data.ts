@@ -13,8 +13,6 @@ export async function fetchUserTreats() {
       FROM treats t left join treatlog tl on t.id = tl.treat_id
       WHERE t.user_id = ${userId}
       GROUP BY t.id`;
-      console.log('!!!');
-      console.log(data.rows)
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);

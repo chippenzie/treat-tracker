@@ -18,5 +18,5 @@ export function timeCodeToTime(timeCode: number): Date {
 
 export async function getUserId() {
   const session = await auth();
-  return session?.user?.id
+  return session?.user?.email
 }

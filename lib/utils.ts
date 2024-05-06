@@ -8,11 +8,11 @@ export function cn(...inputs: ClassValue[]) {
 
 export function getCurrentTimecode(): number {
   // right now changes every minute
-  return Math.floor(Number(new Date()) / (1000 * 60));
+  return Math.floor(Number(new Date()) / (1000 * 60 * 60 * 24));
 }
 
 export function timeCodeToTime(timeCode: number): Date {
-  const epochTime = timeCode * 60 * 1000;
+  const epochTime = timeCode * 1000 * 60 * 60 * 24;
   return new Date(epochTime);
 }
 

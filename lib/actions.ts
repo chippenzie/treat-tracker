@@ -90,17 +90,29 @@ export async function createTreat(prevState: State, formData: FormData) {
      const { userId, timeCode, notes } = validatedFields.data;
 
     try {
-        console.log('s$$$$$$up ' + id + ' ' + currentTimecode)
         await sql`INSERT INTO treatlog(treat_id, time_code, notes) 
                     VALUES (${userId}, ${timeCode}, ${notes})`;
-       revalidatePath('/');
-       console.log('whylordwhy')
+        revalidatePath('/');
         return { message: 'Treat Tracked' };
     }
     catch (e) {
         console.log(e)
         return {
             message: 'DB Error - failed to Create Invoice'
+        }        
+    }
+}
+
+export async function deleteTreat(id: string) {   
+    try {
+        await sql`DELETE FROM treats WHERE (id =  ${id})`;
+        revalidatePath('/');
+        return { message: 'Treat Tracked' };
+    }
+    catch (e) {
+        console.log(e)
+        return {
+            message: 'DB Error - failed to Delete'
         }        
     }
 }

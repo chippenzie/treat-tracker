@@ -1,5 +1,5 @@
 import { fetchUserTreats } from "@/lib/data"
-import { Button, TreatYoSelf } from "@/app/ui/buttons";
+import { Button, TreatYoSelf, DeleteTreat  } from "@/app/ui/buttons";
 import { timeCodeToTime, getCurrentTimecode } from "@/lib/utils";
 
 export default async function Treats(props:any) {
@@ -22,8 +22,10 @@ export default async function Treats(props:any) {
                   Treats Treated
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                 Treats to Treat
+                 Treats Available
                 </th>
+                <th scope="col" className="px-3 py-5 font-medium"> </th>
+                <th scope="col" className="px-3 py-5 font-medium"> </th>
               </tr>
             </thead>
             <tbody className="bg-white">
@@ -49,6 +51,10 @@ export default async function Treats(props:any) {
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
                         <TreatYoSelf id={treat.id} />
+                    </div>
+                  </td><td>
+                    <div className="flex justify-end gap-3">
+                        <DeleteTreat id={treat.id} />
                     </div>
                   </td>
                 </tr>

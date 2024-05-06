@@ -37,7 +37,7 @@ export default function Form() {
 
         <div className="mb-4">
           <label htmlFor="amount" className="mb-2 block text-sm font-medium">
-              Period
+              Every
           </label>
           <div className="relative mt-2 rounded-md">
             <div className="relative">
@@ -48,7 +48,7 @@ export default function Form() {
                 placeholder="Enter period"
                 aria-describedby='period-error'
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-              />
+              /> days
             </div>
             <div id="period-error" aria-live="polite" aria-atomic="true">
               {state.errors?.period && state.errors?.period.map((error: string) => (
